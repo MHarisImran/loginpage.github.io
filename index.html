@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    *{
+    box-sizing: border-box;
+}
+body
+{
+    background-image: linear-gradient(rgb(8, 8, 8),rgb(255, 255, 255));
+}
+.page
+{
+    margin: auto;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    width:25%;
+    border: rgb(118, 99, 5) solid 2px;
+    margin-top: 5%;
+    border-radius: 10px;
+    padding: 20px;
+    height: 450px;
+    margin-bottom: 15%;
+    box-shadow: 5px,yellow;
+}
+h2{
+    margin: auto;
+    text-align: center;
+}
+label
+{
+    margin-left: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.req
+{
+    margin-left: 22px;
+    padding-left: 10px;
+    width: 90%;
+    border-radius: 5px;
+    height: 30px;
+}
+#check
+{
+    margin: 20px;
+    margin-right:5px ;
+}
+#sub
+{
+    width: 90%;
+    background-color: rgb(0, 179, 224);
+    border-radius: 20px;
+    margin-left: 10px;
+}
+a
+{
+    float:right;
+    text-decoration: none;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="page">
+        <form id="forms"> 
+        <h2>Kinda Code</h2>
+        <label>Email</label> <br>
+        <input type="email" placeholder="Enter email" id="email" class="req" required>
+        <br>
+        <label>Password</label><br>
+        <input type="password" placeholder="Enter password" id="password" class="req" required onkeyup="return validate()">
+        <div>
+            <ul>
+            <li id="Uppercase">Atleast one character in uppercase</li>
+            <li id="Lowercase">Atleast one character in lowercase</li>
+            <li id="special_character">Atleast one special character</li>
+            <li id="number">Atleast one number </li>
+            <li id="size">Minimum characters 6</li>
+        </ul>
+        </div>
+        <input type="checkbox" id="check">Remember me
+        <br>
+        <input type="submit" value="Submit" id="sub">
+        <br>
+        <a href="#">Forget Password?</a>
+    </form>
+    </div>
+</body>
+<script>
+    function validate(){
+    var pass = document.getElementById('password');
+    var Uppercase = document.getElementById('Uppercase');
+    var Lowercase = document.getElementById('Lowercase');
+    var special_character = document.getElementById('special_character');
+    var number = document.getElementById('number');
+    var size = document.getElementById('size');
+
+    if(pass.value.match(/[0-9]/)){
+        number.style.color = 'green'
+    }else{
+        number.style.color = 'red'
+    }
+    if(pass.value.match(/[A-Z]/)){
+        Uppercase.style.color = 'green'
+    }else{
+        Uppercase.style.color = 'red'
+    }
+
+    if(pass.value.match(/[a-z]/)){
+        Lowercase.style.color = 'green'
+    }else{
+        Lowercase.style.color = 'red'
+    }
+
+    if(pass.value.match(/[!\@\#\$\%\^\&\*\(\)\-\+\=\_\?\<\>\.\,]/)){
+        special_character.style.color = 'green'
+    }else{
+        special_character.style.color = 'red'
+    }
+
+    if(pass.value.length < 6){
+        size.style.color = 'red'
+    }else{
+        size.style.color = 'green'
+    }
+}
+var forms = document.getElementById('forms');
+forms.addEventListener('submit',(e) => {
+    e.preventDefault();})
+</script>
+</html>
